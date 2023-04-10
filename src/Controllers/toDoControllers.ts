@@ -13,6 +13,17 @@ async function create(req: Request, res: Response) {
   }
 }
 
+async function getAllTasks(req: Request, res: Response) {
+  try {
+    const tasks = await toDoServices.allTasks()
+
+    res.send(tasks)
+  } catch (err) {
+    res.status(500).send(err.message)
+  }
+}
+
 export default {
-  create
+  create,
+  getAllTasks
 }

@@ -9,6 +9,13 @@ async function create(task: string) {
   await toDoRepositories.create(task)
 }
 
+async function allTasks() {
+  const tasks = await toDoRepositories.allTasks()
+
+  return tasks.rows
+}
+
 export default {
-  create
+  create,
+  allTasks
 }

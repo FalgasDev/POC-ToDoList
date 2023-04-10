@@ -13,7 +13,14 @@ async function findByText(task: string) {
   `, [task])
 }
 
+async function allTasks() {
+  return await connectionDb.query(`
+    SELECT * FROM tasks
+  `)
+}
+
 export default {
   create,
-  findByText
+  findByText,
+  allTasks
 }
