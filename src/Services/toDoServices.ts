@@ -15,7 +15,25 @@ async function allTasks() {
   return tasks.rows
 }
 
+async function updateTask(task: string, id: string) {
+  const hasTask = await toDoRepositories.findById(id)
+
+  if (hasTask.rowCount === 0) throw errors.notFoundError()
+
+  await toDoRepositories.updateTask(task, id)
+}
+
+async function deleteTask(id: string) {
+  const hasTask = await toDoRepositories.findById(id)
+
+  if (hasTask.rowCount === 0) throw errors.notFoundError()
+
+  await toDoRepositories.deleteTask(id)
+}
+
 export default {
   create,
-  allTasks
+  allTasks,
+  updateTask,
+  deleteTask
 }

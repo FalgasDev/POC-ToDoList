@@ -1,7 +1,7 @@
 function notFoundError() {
   return {
     name: "NotFoundError",
-    message: "No result for this search!",
+    message: "This task don't exist",
   };
 }
 

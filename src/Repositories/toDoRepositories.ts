@@ -19,8 +19,31 @@ async function allTasks() {
   `)
 }
 
+async function findById(id: string) {
+  return await connectionDb.query(`
+    SELECT * FROM tasks WHERE id = $1
+  `, [id])
+}
+
+async function updateTask(task: string, id: string) {
+  await connectionDb.query(`
+    UPDATE tasks 
+    SET task = $1 
+    WHERE id = $2
+  `, [task ,id])
+}
+
+async function deleteTask(id: string) {
+  await connectionDb.query(`
+    DELETE FROM tasks WHERE id = $1
+  `, [id])
+}
+
 export default {
   create,
   findByText,
-  allTasks
+  allTasks,
+  findById,
+  updateTask,
+  deleteTask
 }
